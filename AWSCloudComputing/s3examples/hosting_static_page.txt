@@ -1,0 +1,48 @@
+To host a static website using Amazon S3, you can configure an S3 bucket to serve static content. Follow these steps to set up and host a static web page on S3:
+
+Step 1: Create an S3 Bucket
+Go to the S3 Console and create a new bucket with a unique name.
+Region: Choose a region closest to your audience for faster loading times.
+Bucket name: The bucket name should match the domain name if you plan to use a custom domain (e.g., example.com or www.example.com).
+Step 2: Configure the Bucket for Static Website Hosting
+Select your bucket, go to the Properties tab, and scroll to Static website hosting.
+Select Enable static website hosting.
+Index document: Enter index.html (or your main HTML file).
+(Optional) Error document: Enter error.html (if you have a custom error page).
+Step 3: Set Bucket Policy for Public Access
+To make the bucket publicly accessible, apply a bucket policy:
+
+Go to the Permissions tab, and click Bucket policy.
+
+Add this policy to allow public read access to all objects:
+
+json
+Copy code
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Principal": "*",
+      "Action": "s3:GetObject",
+      "Resource": "arn:aws:s3:::your-bucket-name/*"
+    }
+  ]
+}
+Replace your-bucket-name with the name of your bucket.
+
+Save the policy and confirm any warnings about public access.
+
+Step 4: Upload Website Files
+Go to the Objects tab in your S3 bucket.
+Upload your index.html file and any other necessary files (e.g., CSS, JavaScript, images).
+Ensure each file’s permissions allow public read access (the bucket policy should handle this for all objects if configured correctly).
+Step 5: Access the Website
+Once configured, you’ll have a website endpoint in the format http://your-bucket-name.s3-website-<AWS-region>.amazonaws.com. This URL is available in the Static website hosting section of the Properties tab.
+
+(Optional) Step 6: Use a Custom Domain with Route 53
+If you want to use a custom domain:
+
+In your domain's DNS settings (in Route 53 or your DNS provider), create an Alias record pointing to your S3 website endpoint.
+Update the DNS settings as needed, then you’ll be able to access the site with your custom domain.
+Your static website should now be live and accessible to the public!
