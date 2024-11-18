@@ -2,7 +2,7 @@
 import boto3
 from botocore.exceptions import ClientError
 
-def create_bucket(bucket_name, region=None, aws_access_key_id="", aws_secret_access_key=""):
+def create_bucket(bucket_name, region=None):
     """
     Creates an S3 bucket in a specified region.
 
@@ -15,9 +15,7 @@ def create_bucket(bucket_name, region=None, aws_access_key_id="", aws_secret_acc
     # Set up the S3 client
     s3_client = boto3.client(
         's3',
-        region_name=region,
-        aws_access_key_id=aws_access_key_id,
-        aws_secret_access_key=aws_secret_access_key
+        region_name=region
     )
 
     try:
@@ -33,7 +31,7 @@ def create_bucket(bucket_name, region=None, aws_access_key_id="", aws_secret_acc
     except ClientError as e:
         print(f"Error creating bucket: {e}")
 
-def create_folder(bucket_name, folder_name, aws_access_key_id="", aws_secret_access_key=""):
+def create_folder(bucket_name, folder_name):
     """
     Creates a folder in an S3 bucket by uploading an empty object with the folder name.
 
@@ -45,9 +43,7 @@ def create_folder(bucket_name, folder_name, aws_access_key_id="", aws_secret_acc
     """
     # Set up the S3 client
     s3_client = boto3.client(
-        's3',
-        aws_access_key_id=aws_access_key_id,
-        aws_secret_access_key=aws_secret_access_key
+        's3'
     )
 
     try:
@@ -61,11 +57,9 @@ def create_folder(bucket_name, folder_name, aws_access_key_id="", aws_secret_acc
 bucket_name = 'your-new-s3-bucket-name'
 folder_name = 'your-folder-name'
 region = 'us-west-1'  # Specify your desired AWS region
-aws_access_key_id = 'YOUR_AWS_ACCESS_KEY'
-aws_secret_access_key = 'YOUR_AWS_SECRET_KEY'
 
 # Create the bucket
-create_bucket(bucket_name, region, aws_access_key_id, aws_secret_access_key)
+create_bucket(bucket_name, region)
 
 # Create the folder inside the bucket
-create_folder(bucket_name, folder_name, aws_access_key_id, aws_secret_access_key)
+create_folder(bucket_name, folder_name)

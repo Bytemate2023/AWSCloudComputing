@@ -4,7 +4,7 @@ import os
 from boto3.s3.transfer import TransferConfig
 from botocore.exceptions import ClientError
 
-def multipart_upload(bucket_name, file_path, object_name=None, aws_access_key_id="", aws_secret_access_key=""):
+def multipart_upload(bucket_name, file_path, object_name=None):
     """
     Uploads a large file to an S3 bucket using multipart upload.
 
@@ -47,7 +47,6 @@ def multipart_upload(bucket_name, file_path, object_name=None, aws_access_key_id
 bucket_name = 'your-s3-bucket-name'
 file_path = 'path/to/your/large/video.mp4'
 object_name = 'uploaded/video.mp4'  # Optional, specify the S3 key if different from file name
-aws_access_key_id = 'YOUR_AWS_ACCESS_KEY'
-aws_secret_access_key = 'YOUR_AWS_SECRET_KEY'
 
-multipart_upload(bucket_name, file_path, object_name, aws_access_key_id, aws_secret_access_key)
+
+multipart_upload(bucket_name, file_path, object_name)

@@ -1,6 +1,6 @@
 import boto3
 
-def list_files(bucket_name, s3_folder, aws_access_key_id="", aws_secret_access_key=""):
+def list_files(bucket_name, s3_folder):
     """
     Lists all files in a specified S3 bucket folder.
 
@@ -16,9 +16,8 @@ def list_files(bucket_name, s3_folder, aws_access_key_id="", aws_secret_access_k
 
     # Set up the S3 client
     s3_client = boto3.client(
-        's3',
-        aws_access_key_id=aws_access_key_id,
-        aws_secret_access_key=aws_secret_access_key
+        's3'
+       
     )
 
     # List all objects in the specified S3 folder
@@ -37,7 +36,6 @@ def list_files(bucket_name, s3_folder, aws_access_key_id="", aws_secret_access_k
 # Usage example
 bucket_name = 'your-s3-bucket-name'
 s3_folder = 'your/s3/folder/'  # Folder in the S3 bucket
-aws_access_key_id = 'YOUR_AWS_ACCESS_KEY'
-aws_secret_access_key = 'YOUR_AWS_SECRET_KEY'
 
-file_keys = list_files(bucket_name, s3_folder, aws_access_key_id, aws_secret_access_key)
+
+file_keys = list_files(bucket_name, s3_folder)

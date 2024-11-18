@@ -2,7 +2,7 @@
 import boto3
 import os
 
-def download_files(bucket_name, s3_folder, local_dir, aws_access_key_id="", aws_secret_access_key=""):
+def download_files(bucket_name, s3_folder, local_dir):
     """
     Downloads all files from an S3 bucket folder to a local directory.
 
@@ -16,9 +16,8 @@ def download_files(bucket_name, s3_folder, local_dir, aws_access_key_id="", aws_
 
     # Set up the S3 client
     s3_client = boto3.client(
-        's3',
-        aws_access_key_id=aws_access_key_id,
-        aws_secret_access_key=aws_secret_access_key
+        's3'
+       
     )
 
     # Ensure local directory exists
@@ -51,7 +50,6 @@ def download_files(bucket_name, s3_folder, local_dir, aws_access_key_id="", aws_
 bucket_name = 'your-s3-bucket-name'
 s3_folder = 'your/s3/folder'  # Folder in the S3 bucket
 local_directory = 'path/to/local/directory'
-aws_access_key_id = 'YOUR_AWS_ACCESS_KEY'
-aws_secret_access_key = 'YOUR_AWS_SECRET_KEY'
 
-download_files(bucket_name, s3_folder, local_directory, aws_access_key_id, aws_secret_access_key)
+
+download_files(bucket_name, s3_folder, local_directory)

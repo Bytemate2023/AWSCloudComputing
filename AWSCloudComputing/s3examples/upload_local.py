@@ -3,7 +3,7 @@
 import boto3
 import os
 
-def upload_files(directory_path, bucket_name, s3_folder="", aws_access_key_id="", aws_secret_access_key=""):
+def upload_files(directory_path, bucket_name, s3_folder=""):
     """
     Uploads all files from a local directory to an S3 bucket using provided AWS credentials.
 
@@ -42,7 +42,6 @@ def upload_files(directory_path, bucket_name, s3_folder="", aws_access_key_id=""
 local_directory = 'path/to/local/directory'
 bucket_name = 'your-s3-bucket-name'
 s3_folder = 'your/s3/folder'  # Optional
-aws_access_key_id = 'YOUR_AWS_ACCESS_KEY'
-aws_secret_access_key = 'YOUR_AWS_SECRET_KEY'
 
-upload_files(local_directory, bucket_name, s3_folder, aws_access_key_id, aws_secret_access_key)
+
+upload_files(local_directory, bucket_name, s3_folder)

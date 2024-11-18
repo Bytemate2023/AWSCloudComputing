@@ -3,7 +3,7 @@ import boto3
 from datetime import datetime, timedelta
 from botocore.exceptions import ClientError
 
-def archive_old_buckets(archive_bucket_name, days_old=365, aws_access_key_id="", aws_secret_access_key=""):
+def archive_old_buckets(archive_bucket_name, days_old=365):
     """
     Archives old S3 buckets by moving their contents to a designated archive bucket
     and then deleting the old buckets.
@@ -18,8 +18,7 @@ def archive_old_buckets(archive_bucket_name, days_old=365, aws_access_key_id="",
     # Initialize the S3 resource
     s3 = boto3.resource(
         's3',
-        aws_access_key_id=aws_access_key_id,
-        aws_secret_access_key=aws_secret_access_key
+        
     )
 
     # Calculate the threshold date for old buckets
@@ -56,7 +55,6 @@ def archive_old_buckets(archive_bucket_name, days_old=365, aws_access_key_id="",
 # Usage example
 archive_bucket_name = 'your-archive-bucket'
 days_old = 365  # Archive buckets older than 1 year
-aws_access_key_id = 'YOUR_AWS_ACCESS_KEY'
-aws_secret_access_key = 'YOUR_AWS_SECRET_KEY'
 
-archive_old_buckets(archive_bucket_name, days_old, aws_access_key_id, aws_secret_access_key)
+
+archive_old_buckets(archive_bucket_name, days_old)

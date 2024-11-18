@@ -4,7 +4,7 @@ import boto3
 from datetime import datetime
 from botocore.exceptions import ClientError
 
-def create_date_based_folder(bucket_name, aws_access_key_id="", aws_secret_access_key=""):
+def create_date_based_folder(bucket_name):
     """
     Creates a folder structure in an S3 bucket based on the current date (yyyy/mm/dd).
 
@@ -19,9 +19,7 @@ def create_date_based_folder(bucket_name, aws_access_key_id="", aws_secret_acces
 
     # Set up the S3 client
     s3_client = boto3.client(
-        's3',
-        aws_access_key_id=aws_access_key_id,
-        aws_secret_access_key=aws_secret_access_key
+        's3'
     )
 
     try:
@@ -33,7 +31,6 @@ def create_date_based_folder(bucket_name, aws_access_key_id="", aws_secret_acces
 
 # Usage example
 bucket_name = 'your-s3-bucket-name'
-aws_access_key_id = 'YOUR_AWS_ACCESS_KEY'
-aws_secret_access_key = 'YOUR_AWS_SECRET_KEY'
 
-create_date_based_folder(bucket_name, aws_access_key_id, aws_secret_access_key)
+
+create_date_based_folder(bucket_name)

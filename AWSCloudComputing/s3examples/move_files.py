@@ -3,7 +3,7 @@
 import boto3
 from botocore.exceptions import ClientError
 
-def move_files(source_bucket, destination_bucket, aws_access_key_id="", aws_secret_access_key=""):
+def move_files(source_bucket, destination_bucket):
     """
     Moves all files from one S3 bucket to another by copying them to the destination bucket
     and then deleting them from the source bucket.
@@ -17,9 +17,8 @@ def move_files(source_bucket, destination_bucket, aws_access_key_id="", aws_secr
     
     # Set up the S3 resource
     s3 = boto3.resource(
-        's3',
-        aws_access_key_id=aws_access_key_id,
-        aws_secret_access_key=aws_secret_access_key
+        's3'
+      
     )
     
     # Get source and destination bucket objects
@@ -46,7 +45,6 @@ def move_files(source_bucket, destination_bucket, aws_access_key_id="", aws_secr
 # Usage example
 source_bucket = 'your-source-bucket'
 destination_bucket = 'your-destination-bucket'
-aws_access_key_id = 'YOUR_AWS_ACCESS_KEY'
-aws_secret_access_key = 'YOUR_AWS_SECRET_KEY'
 
-move_files(source_bucket, destination_bucket, aws_access_key_id, aws_secret_access_key)
+
+move_files(source_bucket, destination_bucket)

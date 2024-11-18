@@ -2,7 +2,7 @@
 import boto3
 from botocore.exceptions import ClientError
 
-def delete_bucket(bucket_name, aws_access_key_id="", aws_secret_access_key=""):
+def delete_bucket(bucket_name):
     """
     Deletes an S3 bucket along with all its contents.
 
@@ -35,7 +35,6 @@ def delete_bucket(bucket_name, aws_access_key_id="", aws_secret_access_key=""):
 
 # Usage example
 bucket_name = 'your-s3-bucket-name'
-aws_access_key_id = 'YOUR_AWS_ACCESS_KEY'
-aws_secret_access_key = 'YOUR_AWS_SECRET_KEY'
 
-delete_bucket(bucket_name, aws_access_key_id, aws_secret_access_key)
+
+delete_bucket(bucket_name)
