@@ -13,9 +13,7 @@ def delete_bucket(bucket_name):
     """
     # Set up the S3 resource
     s3 = boto3.resource(
-        's3',
-        aws_access_key_id=aws_access_key_id,
-        aws_secret_access_key=aws_secret_access_key
+        's3'
     )
     
     try:
